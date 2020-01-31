@@ -12,8 +12,6 @@ export const clearResults = () => {
 };
 
 export const highlightSelected = id => {
-    console.log(id);
-    console.log("highlightSelected");
     const results = elements.searchList.querySelectorAll("li");
     results.forEach(el => {
         el.classList.remove("active");
@@ -55,7 +53,6 @@ const renderRecipe = (recipe, index, page, pageRes) => {
 
 const createButton = (page, type) => {
     const nextPage = type === "prev" ? page - 1 : page + 1;
-    console.log(nextPage);
     return `
     <button class="btn btn-${type}" data-goto=${nextPage}>Page ${nextPage}</button>
     `;
@@ -64,7 +61,6 @@ const createButton = (page, type) => {
 
 const renderButtons = (page, results, pageRes) => {
     const pages = Math.ceil(results.length / pageRes);
-    console.log(`${pages}, ${results.length}, ${pageRes}`);
     let button;
     if (page === 1 && pages > 1) {
         button = createButton(page, 'next');
@@ -80,7 +76,6 @@ export const renderResult = (recipes, page = 1, pageRes = 5) => {
     const start = (page - 1) * pageRes;
     const end = page * pageRes;
     const newRec = recipes.slice(start, end);
-    console.log(recipes);
     newRec.forEach((item, index) => renderRecipe(item, index, page, pageRes));
     renderButtons(page, recipes, pageRes);
 };

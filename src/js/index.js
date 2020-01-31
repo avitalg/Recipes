@@ -3,14 +3,12 @@ import * as searchView from './views/search';
 import * as recipeView from './views/recipe';
 import { elements, renderLoader, clearLoader } from './views/base';
 import Recipe from './models/Recipe';
-import List from './models/ShoppingList';
 import '../styles/style.scss';
 
 const state = {};
 
 const controlSearch = async () => {
     const query = searchView.getInput().value;
-    console.log(query);
     if (query) {
         state.search = new Search(query);
         searchView.cleanInput();
@@ -32,9 +30,7 @@ const constrolRecipe = (currItem) => {
     searchView.highlightSelected(currRes);
     const nres = parseInt(currItem.dataset.nres);
     const itemIndex = (nres * (currPage - 1) + currRes);
-    console.log(state.search.result[itemIndex]);
     state.recipe = new Recipe(state.search.result[itemIndex]);
-    console.log(state.recipe);
     recipeView.getRecipe(state.recipe.title, state.recipe.ingredients, state.recipe.img);
 }
 
