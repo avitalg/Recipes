@@ -42,9 +42,6 @@ const renderRecipe = (recipe, index, page, pageRes) => {
         </figure>
         <div class="result_data">
             <h3 class="result-title">${limitRecipeTitle(recipe.label)}</h3>
-            <a class="results_link" href="${recipe.url}" target="_blank">
-                <p class="result-source">${recipe.source}</p>
-            </a>
         </div>
         
     </li> `;

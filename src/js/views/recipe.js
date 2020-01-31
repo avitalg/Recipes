@@ -9,13 +9,15 @@ export const clearRecipe = () => {
 export const getRecipe = (title, ingredients, image) => {
     const recipe = `
     <div class="recipe-text">
+        <h2>${title}</h2>
         <figure>
             <img src="${image}" alt="test"/>
         </figure>
-        <h2>${title}</h2>
-        <div>
+        <div class="recipe-details">
             <h3>Ingredients</h3>
-            ${ingredients.map((item, index) => `<p data-index=${index}>${item.text}</p>`).join('')}
+            <ol>
+            ${ingredients.map((item, index) => `<li data-index=${index}>${item.text}</p>`).join('')}
+            </ol>
         </div>
     </div>`;
     elements.selectedRecipe.insertAdjacentHTML("beforeend", recipe);
